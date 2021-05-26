@@ -4,21 +4,59 @@ declare(strict_types = 1);
 
 echo "<hr> <h3> exercise 4 </h3>";
 
+class Beverage3 {
 
-class Beer3 extends Beverage {
+    protected string $color;
+    protected float $price;
+    protected string $temperature;
 
-    protected string $name;
-
-    public function getName(): string
+    function __construct(string $color, float $price, string $temperature = 'cold')
     {
-        return $this->name;
+        $this->color = $color;
+        $this->price = $price;
+        $this->temperature = $temperature;
     }
 
-    public function setName(string $name): void
+    public function getInfo()
     {
-        $this->name = $name;
+        return 'This beverage is ' . $this->temperature . ' and ' . $this->color . '<br/>';
     }
-    protected float $alcoholPercentage;
+
+    public function getColor(): string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): void
+    {
+        $this->color = $color;
+    }
+
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(float $price): void
+    {
+        $this->price = $price;
+    }
+
+    public function getTemperature(): string
+    {
+        return $this->temperature;
+    }
+
+    public function setTemperature(string $temperature): void
+    {
+        $this->temperature = $temperature;
+    }
+}
+
+class Beer3 extends Beverage3 {
+
+    private string $name;
+    private float $alcoholPercentage;
 
     function __construct(string $color, float $price, string $name, float $alcoholPercentage, string $temperature='cold')
     {
@@ -27,15 +65,38 @@ class Beer3 extends Beverage {
         parent::__construct($color, $price, $temperature);
     }
 
-    function getAlcoholpercentage()
+    public function getAlcoholpercentage()
     {
         parent::getInfo();
         return $this->alcoholPercentage;
     }
+
+    function beerInfo(){
+        return 'Hi i\'m ' . $this->getName() . ' and have an alcohol percentage of ' . $this->getAlcoholpercentage() . ' and I have a ' . $this->getColor() . ' color' . '<br/>';
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName(string $name): void
+    {
+        $this->name = $name;
+    }
+
 }
 
-$duvelBeer = new Beer3('blonde', 3.5, 'Duvel', 8.5, );
-echo $duvelBeer->getAlcoholpercentage(). '<br/>';
-echo $duvelBeer->temperature . '<br/>';
-echo $duvelBeer->color. '<br/>';
-echo $duvelBeer->getInfo(). '<br/>';
+$duvelBeer = new Beer3('blond', 3.5, 'Duvel', 8.5, );
+echo $duvelBeer->getAlcoholpercentage() . '<br/>';
+echo $duvelBeer->getTemperature() . '<br/>';
+echo $duvelBeer->getColor() . '<br/>';
+$duvelBeer->setColor('light');
+echo $duvelBeer->getInfo() . '<br/>';
+echo $duvelBeer->beerInfo() .'<br/>';

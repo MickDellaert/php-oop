@@ -7,6 +7,8 @@ include "exercise1.php";
 include "exercise2.php";
 include "exercise3.php";
 include "exercise4.php";
+include "exercise6.php";
+
 
 
 
