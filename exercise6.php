@@ -100,9 +100,17 @@ echo $duvelBeer->getTemperature() . '<br/>';
 echo $duvelBeer->getColor() . '<br/>';
 $duvelBeer->setColor('light');
 echo $duvelBeer->getInfo() . '<br/>';
-echo $duvelBeer->beerInfo() .'<br/>';
+echo $duvelBeer->beerInfo() . '<br/>';
 
 
 $greenTea = new Drinks('green', 3, 'Green Tea', 0);
 echo $greenTea->beerInfo();
-echo Beverage5::getNewOrder();
+$greenTea->setTemperature('hot');
+echo $greenTea->getInfo() . '<br/>';
+
+$iceTea = new Drinks('brown', 3, 'Ice Tea', 0);
+echo $iceTea->beerInfo();
+$iceTea->setTemperature('ice cold');
+echo $iceTea->getInfo() . '<br/>';
+
+echo "Total number of new drinks: " . Beverage5::getNewOrder();
